@@ -6,5 +6,5 @@ import react from '@vitejs/plugin-react'
 // 例如 repo 叫 growth-dashboard，就填 '/growth-dashboard/'
 export default defineConfig({
   plugins: [react()],
-  base: '/REPLACE_WITH_YOUR_REPO_NAME/',
+  base: '/growth-dashboard/',
 })
