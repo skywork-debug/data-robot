@@ -35,7 +35,7 @@ import {
    即可，按鈕、loading 狀態、最後更新時間都不用改。
    ============================================================ */
 
-const DATA_SOURCE_URL = ""; // ← 之後貼上 Apps Script Web App 網址
+const DATA_SOURCE_URL = "https://script.google.com/macros/s/AKfycbwxQ8qqRmLH2EAmUWyoLZW3YHas4gn3NGs7Ss0fGzi_Pltjd-zdP-9ASWFAjSjU6zxS/exec"; // ← 之後貼上 Apps Script Web App 網址
 
 function mulberry32(seed) {
   return function () {
