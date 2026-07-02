@@ -375,16 +375,24 @@ export default function GrowthLedgerDashboard() {
     setIsRefreshing(true);
 
     setTimeout(() => {
-      if (DATA_SOURCE_URL) {
+     if (DATA_SOURCE_URL) {
         fetch(DATA_SOURCE_URL)
           .then((res) => res.json())
           .then((json) => {
             setBrandsData((prev) =>
-              prev.map((b) => ({
-                ...b,
-                platforms: json[b.id]?.platforms ?? b.platforms,
-                postRecords: json[b.id]?.postRecords ?? b.postRecords,
-              }))
+              prev.map((b) => {
+                const incoming = json[b.id];
+                if (!incoming) return b;
+                const mergedPlatforms = {};
+                Object.keys(b.platforms).forEach((key) => {
+                  mergedPlatforms[key] = (incoming.platforms && incoming.platforms[key]) || [];
+                });
+                return {
+                  ...b,
+                  platforms: mergedPlatforms,
+                  postRecords: incoming.postRecords || [],
+                };
+              })
             );
           })
           .finally(() => {
